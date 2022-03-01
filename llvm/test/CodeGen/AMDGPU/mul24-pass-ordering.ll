@@ -195,15 +195,15 @@ define void @slsr1_1(i32 %b.arg, i32 %s.arg) #0 {
 ; GFX9-NEXT:    v_writelane_b32 v40, s33, 4
 ; GFX9-NEXT:    s_mov_b32 s33, s32
 ; GFX9-NEXT:    s_addk_i32 s32, 0x800
-; GFX9-NEXT:    v_writelane_b32 v40, s34, 0
-; GFX9-NEXT:    s_getpc_b64 s[4:5]
-; GFX9-NEXT:    s_add_u32 s4, s4, foo@gotpcrel32@lo+4
-; GFX9-NEXT:    s_addc_u32 s5, s5, foo@gotpcrel32@hi+12
-; GFX9-NEXT:    v_writelane_b32 v40, s35, 1
-; GFX9-NEXT:    s_load_dwordx2 s[34:35], s[4:5], 0x0
 ; GFX9-NEXT:    buffer_store_dword v41, off, s[0:3], s33 offset:8 ; 4-byte Folded Spill
 ; GFX9-NEXT:    buffer_store_dword v42, off, s[0:3], s33 offset:4 ; 4-byte Folded Spill
 ; GFX9-NEXT:    buffer_store_dword v43, off, s[0:3], s33 ; 4-byte Folded Spill
+; GFX9-NEXT:    v_writelane_b32 v40, s34, 0
+; GFX9-NEXT:    v_writelane_b32 v40, s35, 1
+; GFX9-NEXT:    s_getpc_b64 s[4:5]
+; GFX9-NEXT:    s_add_u32 s4, s4, foo@gotpcrel32@lo+4
+; GFX9-NEXT:    s_addc_u32 s5, s5, foo@gotpcrel32@hi+12
+; GFX9-NEXT:    s_load_dwordx2 s[34:35], s[4:5], 0x0
 ; GFX9-NEXT:    v_mov_b32_e32 v41, v1
 ; GFX9-NEXT:    v_mov_b32_e32 v42, v0
 ; GFX9-NEXT:    v_writelane_b32 v40, s30, 2

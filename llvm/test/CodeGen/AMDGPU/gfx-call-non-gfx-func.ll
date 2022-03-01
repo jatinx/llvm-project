@@ -12,6 +12,8 @@ define amdgpu_gfx void @gfx_func() {
 ; SDAG-NEXT:    buffer_store_dword v40, off, s[0:3], s32 ; 4-byte Folded Spill
 ; SDAG-NEXT:    s_mov_b64 exec, s[34:35]
 ; SDAG-NEXT:    v_writelane_b32 v40, s33, 26
+; SDAG-NEXT:    s_mov_b32 s33, s32
+; SDAG-NEXT:    s_addk_i32 s32, 0x400
 ; SDAG-NEXT:    v_writelane_b32 v40, s4, 0
 ; SDAG-NEXT:    v_writelane_b32 v40, s5, 1
 ; SDAG-NEXT:    v_writelane_b32 v40, s6, 2
@@ -30,22 +32,20 @@ define amdgpu_gfx void @gfx_func() {
 ; SDAG-NEXT:    v_writelane_b32 v40, s19, 15
 ; SDAG-NEXT:    v_writelane_b32 v40, s20, 16
 ; SDAG-NEXT:    v_writelane_b32 v40, s21, 17
-; SDAG-NEXT:    s_mov_b32 s33, s32
-; SDAG-NEXT:    s_addk_i32 s32, 0x400
 ; SDAG-NEXT:    v_writelane_b32 v40, s22, 18
 ; SDAG-NEXT:    v_writelane_b32 v40, s23, 19
-; SDAG-NEXT:    s_mov_b64 s[36:37], s[30:31]
-; SDAG-NEXT:    s_getpc_b64 s[30:31]
-; SDAG-NEXT:    s_add_u32 s30, s30, extern_c_func@gotpcrel32@lo+4
-; SDAG-NEXT:    s_addc_u32 s31, s31, extern_c_func@gotpcrel32@hi+12
 ; SDAG-NEXT:    v_writelane_b32 v40, s24, 20
-; SDAG-NEXT:    s_load_dwordx2 s[30:31], s[30:31], 0x0
 ; SDAG-NEXT:    v_writelane_b32 v40, s25, 21
 ; SDAG-NEXT:    v_writelane_b32 v40, s26, 22
 ; SDAG-NEXT:    v_writelane_b32 v40, s27, 23
 ; SDAG-NEXT:    v_writelane_b32 v40, s28, 24
-; SDAG-NEXT:    s_mov_b64 s[8:9], 0
 ; SDAG-NEXT:    v_writelane_b32 v40, s29, 25
+; SDAG-NEXT:    s_mov_b64 s[36:37], s[30:31]
+; SDAG-NEXT:    s_getpc_b64 s[30:31]
+; SDAG-NEXT:    s_add_u32 s30, s30, extern_c_func@gotpcrel32@lo+4
+; SDAG-NEXT:    s_addc_u32 s31, s31, extern_c_func@gotpcrel32@hi+12
+; SDAG-NEXT:    s_load_dwordx2 s[30:31], s[30:31], 0x0
+; SDAG-NEXT:    s_mov_b64 s[8:9], 0
 ; SDAG-NEXT:    s_waitcnt lgkmcnt(0)
 ; SDAG-NEXT:    s_swappc_b64 s[30:31], s[30:31]
 ; SDAG-NEXT:    v_readlane_b32 s29, v40, 25
@@ -89,6 +89,8 @@ define amdgpu_gfx void @gfx_func() {
 ; GISEL-NEXT:    buffer_store_dword v40, off, s[0:3], s32 ; 4-byte Folded Spill
 ; GISEL-NEXT:    s_mov_b64 exec, s[34:35]
 ; GISEL-NEXT:    v_writelane_b32 v40, s33, 26
+; GISEL-NEXT:    s_mov_b32 s33, s32
+; GISEL-NEXT:    s_addk_i32 s32, 0x400
 ; GISEL-NEXT:    v_writelane_b32 v40, s4, 0
 ; GISEL-NEXT:    v_writelane_b32 v40, s5, 1
 ; GISEL-NEXT:    v_writelane_b32 v40, s6, 2
@@ -107,22 +109,20 @@ define amdgpu_gfx void @gfx_func() {
 ; GISEL-NEXT:    v_writelane_b32 v40, s19, 15
 ; GISEL-NEXT:    v_writelane_b32 v40, s20, 16
 ; GISEL-NEXT:    v_writelane_b32 v40, s21, 17
-; GISEL-NEXT:    s_mov_b32 s33, s32
-; GISEL-NEXT:    s_addk_i32 s32, 0x400
 ; GISEL-NEXT:    v_writelane_b32 v40, s22, 18
 ; GISEL-NEXT:    v_writelane_b32 v40, s23, 19
-; GISEL-NEXT:    s_mov_b64 s[36:37], s[30:31]
-; GISEL-NEXT:    s_getpc_b64 s[30:31]
-; GISEL-NEXT:    s_add_u32 s30, s30, extern_c_func@gotpcrel32@lo+4
-; GISEL-NEXT:    s_addc_u32 s31, s31, extern_c_func@gotpcrel32@hi+12
 ; GISEL-NEXT:    v_writelane_b32 v40, s24, 20
-; GISEL-NEXT:    s_load_dwordx2 s[30:31], s[30:31], 0x0
 ; GISEL-NEXT:    v_writelane_b32 v40, s25, 21
 ; GISEL-NEXT:    v_writelane_b32 v40, s26, 22
 ; GISEL-NEXT:    v_writelane_b32 v40, s27, 23
 ; GISEL-NEXT:    v_writelane_b32 v40, s28, 24
-; GISEL-NEXT:    s_mov_b64 s[8:9], s[4:5]
 ; GISEL-NEXT:    v_writelane_b32 v40, s29, 25
+; GISEL-NEXT:    s_mov_b64 s[36:37], s[30:31]
+; GISEL-NEXT:    s_getpc_b64 s[30:31]
+; GISEL-NEXT:    s_add_u32 s30, s30, extern_c_func@gotpcrel32@lo+4
+; GISEL-NEXT:    s_addc_u32 s31, s31, extern_c_func@gotpcrel32@hi+12
+; GISEL-NEXT:    s_load_dwordx2 s[30:31], s[30:31], 0x0
+; GISEL-NEXT:    s_mov_b64 s[8:9], s[4:5]
 ; GISEL-NEXT:    s_waitcnt lgkmcnt(0)
 ; GISEL-NEXT:    s_swappc_b64 s[30:31], s[30:31]
 ; GISEL-NEXT:    v_readlane_b32 s29, v40, 25

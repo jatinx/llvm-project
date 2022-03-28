@@ -69,7 +69,7 @@
   DEFINE_MDNODE_GET_TEMPORARY(CLASS, FORMAL, ARGS)
 // FIXME: This old naming is retained as an alias to make the diff smaller, but
 // could eventually be eliminated and the references updated.
-#define DEFINE_MDNODE_GET(...) DEFINE_ALL_MDNODE_GET_METHODS(__VA_ARGS__)
+#define DEFINE_MDNODE_GET(CLASS, FORMAL, ARGS) DEFINE_ALL_MDNODE_GET_METHODS(CLASS, FORMAL, ARGS)
 #define DEFINE_ALWAYS_DISTINCT_MDNODE_GET_METHODS(CLASS, FORMAL, ARGS)         \
   DEFINE_MDNODE_GET_DISTINCT(CLASS, FORMAL, ARGS)                              \
   DEFINE_MDNODE_GET_TEMPORARY(CLASS, FORMAL, ARGS)

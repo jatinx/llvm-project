@@ -417,6 +417,12 @@ void AMDGPUTargetInfo::getTargetDefines(const LangOptions &Opts,
     Builder.defineMacro("FP_FAST_FMA");
 
   Builder.defineMacro("__AMDGCN_WAVEFRONT_SIZE", Twine(WavefrontSize));
+
+  // Define SYCL Macros for AMDGPU - ROCclr - Jatin
+   if (Opts.ASYCL) {
+     Builder.defineMacro("__AMDGCN_ASYCL__");
+     Builder.defineMacro("__AMDGCN_ASYCL_VERSION__", "1");
+   }
 }
 
 void AMDGPUTargetInfo::setAuxTarget(const TargetInfo *Aux) {

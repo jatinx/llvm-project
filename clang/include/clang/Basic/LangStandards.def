@@ -209,6 +209,10 @@ LANGSTANDARD(cuda, "cuda", CUDA, "NVIDIA CUDA(tm)",
 LANGSTANDARD(hip, "hip", HIP, "HIP",
              LineComment | CPlusPlus | CPlusPlus11 | CPlusPlus14 | Digraphs)
 
+// ASYCL
+LANGSTANDARD(asycl, "asycl", ASYCL, "ASYCL",
+             LineComment | CPlusPlus | CPlusPlus11 | CPlusPlus14 | Digraphs)
+
 #undef LANGSTANDARD
 #undef LANGSTANDARD_ALIAS
 #undef LANGSTANDARD_ALIAS_DEPR

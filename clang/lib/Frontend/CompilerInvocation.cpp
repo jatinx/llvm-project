@@ -2580,6 +2580,9 @@ static void GenerateFrontendArgs(const FrontendOptions &Opts,
     case Language::HIP:
       Lang = "hip";
       break;
+    case Language::ASYCL:
+      Lang = "asycl";
+      break;
     case Language::CXX:
       Lang = "c++";
       break;
